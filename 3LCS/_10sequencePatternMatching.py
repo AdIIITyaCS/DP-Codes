@@ -68,17 +68,17 @@ def sequencePatternMatching(a,b):
                     mat[i][j]=max(mat[i-1][j],mat[i][j-1])
         # print(mat[m][n])
         return mat[m][n]
-    # x=LCS(a,b)
-    # print(x)/
-    # if LCS(a,b)==m:
-    #     return True
-    # else:
-    #     return False
+    x=LCS(a,b)
+    print(x)
+    if LCS(a,b)==m:
+        return True
+    else:
+        return False
 
-    return LCS(a,b)==m 
+    # return LCS(a,b)==m 
 # a="axyz"
 # b=""
-a1=""
+a1="abg"
 b1="ahbgdc"
 # print(LCSprint(a,b))
 # print(sequencePatternMatching(a,b))

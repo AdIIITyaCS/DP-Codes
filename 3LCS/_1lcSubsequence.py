@@ -35,61 +35,62 @@
 
 
 # Top-down (Memoization) approach
-# def longestCommonSubsequence(X, Y, m, n):
-#     mat = [[-1 for _ in range(n+1)] for _ in range(m+1)]
-
-#     # Initialize base case
-#     for i in range(m+1):
-#         for j in range(n+1):
-#             if i == 0 or j == 0:
-#                 mat[i][j] = 0
-
-#     # Fill DP table
-#     for i in range(1, m+1):
-#         for j in range(1, n+1):
-#             if X[i-1] == Y[j-1]:
-#                 mat[i][j] = 1 + mat[i-1][j-1]
-#             else:
-#                 mat[i][j] = max(mat[i][j-1], mat[i-1][j])
-#     # print(mat)
-#     return mat[m][n]
-
-# # Example usage
-# X=""
-# Y="abcd"
-# # X="agbcba"
-# # Y="abcbga"
-# m = len(X)
-# n = len(Y)
-# print(longestCommonSubsequence(X, Y, m, n))  # Output: 3
-
-
-
-
 def longestCommonSubsequence(X, Y, m, n):
-    mat = [[False for _ in range(n+1)] for _ in range(m+1)]
+    # either we initiate with -1 or 0.
+    mat = [[-1 for _ in range(n+1)] for _ in range(m+1)]
 
     # Initialize base case
     for i in range(m+1):
-        for j in range(n+1):
-            if i == 0 or j == 0:
-                mat[i][j] = True
+        mat[i][0]=0
+    for j in range(n+1):
+        mat[0][j] = 0
 
     # Fill DP table
     for i in range(1, m+1):
         for j in range(1, n+1):
             if X[i-1] == Y[j-1]:
-                mat[i][j] = True
+                mat[i][j] = 1 + mat[i-1][j-1]
             else:
-                mat[i][j] = mat[i][j-1] or mat[i-1][j]
+                mat[i][j] = max(mat[i][j-1], mat[i-1][j])
     # print(mat)
     return mat[m][n]
 
 # Example usage
-X="e"
-Y="abcd"
-# X="abcdgh"
-# Y="abedfhr"
+# X=""
+# Y="abcd"
+X="agbcba"
+Y="abcbga"
 m = len(X)
 n = len(Y)
 print(longestCommonSubsequence(X, Y, m, n))  # Output: 3
+
+
+
+
+# def longestCommonSubsequence(X, Y, m, n):
+#     mat = [[False for _ in range(n+1)] for _ in range(m+1)]
+
+#     # Initialize base case
+#     for i in range(m+1):
+#         for j in range(n+1):
+#             if i == 0 or j == 0:
+#                 mat[i][j] = True
+
+#     # Fill DP table
+#     for i in range(1, m+1):
+#         for j in range(1, n+1):
+#             if X[i-1] == Y[j-1]:
+#                 mat[i][j] = True
+#             else:
+#                 mat[i][j] = mat[i][j-1] or mat[i-1][j]
+#     # print(mat)
+#     return mat[m][n]
+
+# # Example usage
+# X="e"
+# Y="abcd"
+# # X="abcdgh"
+# # Y="abedfhr"
+# m = len(X)
+# n = len(Y)
+# print(longestCommonSubsequence(X, Y, m, n))  # Output: 3
