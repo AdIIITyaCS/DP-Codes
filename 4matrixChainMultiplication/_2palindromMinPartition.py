@@ -37,7 +37,8 @@ def palindromeMinPartioning(s):
         mat[i][j]=mn
         return mn
     return MCM(0,n-1)
-s="ababbbabbababa"
+# s="ababbbabbababa"
+s="nitin"
 # n=len(s)
 print(palindromeMinPartioning(s))
 
